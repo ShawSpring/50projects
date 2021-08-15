@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>draw heart with css</title>
+    <style>
+        .canvas{
+            width:200px;
+            height:200px;
+            margin:auto;
+            --width:50px;
+            --height:50px;
+            position:relative;
+        }
+        .heart{
+            width:var(--width);
+            height:var(--height);
+            background-color:pink;
+
+            transform:rotate(-45deg);
+        }
+        .heart::before{
+            /* content是必须的，即使没有文字 */
+            content:""; 
+
+            width:var(--width);
+            height: var(--height);
+            background-color:pink;
+            
+            position:absolute;
+            top:calc(var(--height)/-2);
+            border-radius: 50%;
+            
+        }
+        .heart::after{
+            /* content是必须的，即使没有文字 */
+            content:""; 
+
+            width:var(--width);
+            height: var(--height);
+            background-color:pink;
+            
+            position:absolute;
+            left:calc(var(--width)/2);
+            border-radius: 50%;
+            
+        }
+    </style>
+</head>
+<body>
+    <H3>思路</H3>
+    <ul>
+        <li>画个正方形</li>
+        <li>利用伪元素，画两个同等高宽的圆形</li>
+        <li>两个圆形分别偏移到正方形的上边和侧边，组成心形</li>
+        <li>transform：rotate() 扶正心行</li>
+    </ul>
+    <div class="canvas">
+        <div class="heart"></div>
+    </div>
+</body>
+</html>
