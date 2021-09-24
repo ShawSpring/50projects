@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>progress circle</title>
+    <link rel="stylesheet" href="../commom/base.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <figure>
+        <h3>环形进度条</h3>
+        <p>两个半圆旋转，第二个半圆animation-delay,刚好衔接</p>
+        <p>里面的inner遮挡，把圆形成圆环</p>
+        <p>两个半圆需要在两个容器里，使之overflow:hidden， 这样半圆旋转出界就隐藏起来了</p>
+        <p>测试时：使用interval 模拟加载进度，先控制数字百分比变动</p>
+        <p>根据百分比 计算进度条的角度deg，在if(deg>180)判断该那个圆转，实际该转多少度</p>
+    </figure>
+    <div class="progress">
+        <div class="left-container">
+            <div class="left-circle"></div>
+        </div>
+        <div class="right-container">
+            <div class="right-circle"></div>
+        </div>
+        <div class="inner-circle">0%</div>
+    </div>
+    <script>
+        const left_circle =document.querySelector('.progress .left-circle');
+        const right_circle = document.querySelector('.progress .right-circle');
+        const inner_circle = document.querySelector('.inner-circle');
+        let load = 0;
+        let total= 2000;
+        let  rotate_deg = -180;
+        
+        const timer = setInterval(function(){
+            percent = Number(load/total *100).toFixed(1);
+            deg = Number(load/total *360).toFixed(0);
+            if(percent>100){
+                clearInterval(timer);
+                percent = 100;
+                deg = 360;
+                
+            }
+            rotate_deg= deg-180;
+            console.log(rotate_deg);
+            if(deg <= 180){
+                
+                right_circle.style.transform="rotate("+rotate_deg+"deg)";
+            }else{
+                rotate_deg-=180;
+                left_circle.style.transform="rotate("+rotate_deg+"deg)";
+            }
+            inner_circle.textContent = percent+"%";
+            load++;
+        },1)
+    </script>
+</body>
+</html>

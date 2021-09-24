@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>打字特效</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --num-characters: 10;
+
+            --color-font: #FFF;
+            --color-bg: rgb(15, 51, 40);
+            --font-size: 18px;
+            --typing-duration: 30s;
+        }
+
+        body {
+
+
+            background-color: var(--color-bg);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+
+        }
+
+        .typing-text {
+            color: var(--color-font);
+            font-size: var(--font-size);
+            position: relative;
+            font-family: monospace;
+            /* 不能换行 换行就第二行露馅了 */
+            white-space: pre;
+        }
+
+        .typing-text::before,
+        .typing-text::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            background-color: var(--color-bg);
+            animation: move-to-right var(--typing-duration) steps(var(--num-characters)) 1s forwards;
+
+        }
+
+        /* 价格延迟 1s， blink先闪1s后在move-to-right */
+        .typing-text::after {
+            width: 2px;
+            background-color: var(--color-font);
+            animation: blink 1s steps(3) infinite,
+                move-to-right var(--typing-duration) steps(var(--num-characters)) 1s forwards;
+        }
+        @keyframes move-to-right {
+            to {
+                left: 100%;
+            }
+        }
+
+        @keyframes blink {
+            from,
+            to {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <article style="position:absolute;top:0;color:#FFF;">
+        <h2>说明</h2>
+        <p>
+            需要等宽字体， 比如monospace
+        </p>
+        <p>
+            不能换行
+        </p>
+        <p>
+            使用js 控制字符数量
+        </p>
+    </article>
+    
+    <h3 class="typing-text">aorem ipsum dolor sit amet consectetur adipisicing elit. Natus, ullam!</h3>
+    <script>
+        typingText = document.querySelector('.typing-text')
+        document.documentElement.style.setProperty('--num-characters', typingText.textContent.length)
+    </script>
+</body>
+
+</html>

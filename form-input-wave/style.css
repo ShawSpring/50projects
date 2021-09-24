@@ -1,0 +1,103 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+body {
+    --color-form: #FFF;
+    display: flex;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+    background-color: lightslategrey;
+}
+
+.container {
+    background-color: rgba(3, 3, 3, 0.5);
+    color: #eee;
+    border-radius: 1rem;
+    padding: 20px 40px;
+}
+
+.container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.container .form-control {
+    position: relative;
+    margin: 30px 0 50px;
+    width: 300px;
+}
+
+.container input {
+    outline: none;
+    width: 100%;
+    padding: 10px 0px;
+    border: 0;
+    border-bottom: 2px solid var(--color-form);
+    background: transparent;
+    font-size: 18px;
+    color: #fff;
+}
+
+.form-control label {
+    color: var(--color-form);
+    position: absolute;
+    left: 0;
+    top: 20px;
+}
+
+.form-control label span {
+    display: inline-block;
+    min-width: 5px;
+    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.container .btn {
+    display: block;
+    width: 100%;
+    padding: 10px 0;
+    margin-top: -10px;
+    border-radius: 5px;
+    background-color: lightblue;
+    font-size: larger;
+    cursor: pointer;
+    outline: none;
+}
+
+.container .btn:hover {
+    transform: scale(1.1);
+}
+
+container .btn:active {
+    transform: scale(0.98);
+}
+
+.container .footer-text {
+    margin: 20px 0 15px;
+}
+
+.container .footer-text a {
+    color: rgb(193, 127, 238);
+    cursor: pointer;
+}
+
+/* 颜色变更 */
+.container input:focus,
+.container input:valid {
+    --color-form: lightblue;
+}
+
+.container input:focus+label,
+.container input:valid+label {
+    --color-form: lightblue;
+}
+
+/* .container input:focus+label, */
+/*   input内容为空也算invalid 不能实现 改用js实现填写了非法的email时 也要升起来 */
+/* .container input:invalid+label, */
+/* .container input:valid+label {
+    transform:translateY(-40px);
+} */

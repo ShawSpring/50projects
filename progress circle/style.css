@@ -1,0 +1,87 @@
+:root{
+    /* 边长 */
+    --m:50px;
+    --n:100px;
+    --color-progress:red;
+    --color-inner:rgb(57, 181, 197);
+    --color-text:rgb(210, 224, 216);
+}
+
+.progress{
+    width:var(--n);
+    height: var(--n);
+    position:relative;
+    border-radius:50%;
+}
+.progress .left-container,
+.progress .right-container{
+    width:var(--m);
+    height:var(--n);
+    position:absolute;
+    top:0;
+    overflow: hidden;
+/* 
+    background-color:goldenrod;
+    opacity: 0.4; */
+}
+.progress .right-container{
+    right:0;
+}
+
+
+.progress .inner-circle{
+   
+    font-weight: bold;
+    width:calc(var(--n) *0.8);
+    height:calc(var(--n) *0.8);
+    background-color:var(--color-inner);
+    position:absolute;
+    border-radius:50%;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+
+    text-align:center;
+    line-height:calc(var(--n) *0.8);
+}
+
+.progress .left-circle,
+.progress .right-circle{
+    width:var(--m);
+    height:var(--n);
+    position:absolute;
+    top:0;
+    background-color: var(--color-progress);
+}
+.progress .left-circle{
+    border-top-left-radius: var(--n);
+    border-bottom-left-radius: var(--n);
+    transform-origin: var(--m) var(--m);
+    transform:rotate(-180deg);
+    /* animation:rotate-left 2s  linear forwards; */
+    animation-delay: 2s;
+
+
+}
+.progress .right-circle{
+    right:0;
+    border-top-right-radius: var(--n);
+    border-bottom-right-radius: var(--n);
+    transform-origin: 0 var(--m);
+    transform:rotate(-180deg);
+    /* animation:rotate-right 2s  linear forwards; */
+}
+
+/*  */
+@keyframes rotate-left {
+    from{ 
+        transform:rotate(-180deg);
+    }
+    to{ transform:rotate(0deg);}
+}
+@keyframes rotate-right {
+    from{ 
+        transform:rotate(-180deg);
+    }
+    to{ transform:rotate(0);}
+}

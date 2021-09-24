@@ -1,0 +1,79 @@
+.cl-tip {
+    position: relative;
+    --color-border: lightseagreen;
+    --color-bg: lightpink;
+}
+
+.cl-tip::before {
+    content: attr(tooltip);
+    white-space: pre;
+    position: absolute;
+    display: none;
+    padding: 0.2em;
+    height: 1.4em;
+    border: 1px solid var(--color-border);
+    border-radius: 0.5em;
+    background-color: var(--color-bg);
+}
+.cl-tip:hover::before {
+    display: block;
+}
+.cl-tip::after {
+    position: absolute;
+    height: 5px;
+    line-height: 5px;
+    color: var(--color-border);
+    display: none;
+}
+.cl-tip:hover::after {
+    display: block;
+}
+
+/*  特性 定义 */
+.cl-tip[position="top"]::before {
+    bottom: calc(100% + 6px);
+    left: 50%;
+    transform: translate(-50%, 0);
+}
+.cl-tip[position="top"]::after {
+    content: "\25BC";
+    top:-5px;
+    left: 50%;
+    transform: translate(-50%, 0);
+}
+/* left */
+.cl-tip[position="left"]::before {
+    right: calc(100% + 5px);
+    top:50%;
+    transform: translate(0, -50%);
+}
+.cl-tip[position="left"]::after {
+    content: "\25BA";
+   left:-7px;
+    top:50%;
+    transform: translate(0, -50%);
+}
+/* right */
+.cl-tip[position="right"]::before {
+    left: calc(100% + 5px);
+    top:50%;
+    transform: translate(0, -50%);
+}
+.cl-tip[position="right"]::after {
+    content: "\25C4";
+    right:-7px;
+    top:50%;
+    transform: translate(0, -50%);
+}
+/* bottom */
+.cl-tip[position="bottom"]::before {
+    top: calc(100% + 7px);
+    left: 50%;
+    transform: translate(-50%, 0);
+}
+.cl-tip[position="bottom"]::after {
+    content: "\25B2";
+    bottom:-5px;
+    left: 50%;
+    transform: translate(-50%, 0);
+}

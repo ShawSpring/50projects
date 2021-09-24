@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>cl-tooltip</title>
+        <style>
+            .container {
+                /* overflow: hidden; */
+                width: 300px;
+                height: 300px;
+                border: 1px solid #444;
+                border-radius: 10px;
+                margin: 80px auto;
+                cursor: pointer;
+                display: grid;
+                grid-template:
+                    "top top" 1fr
+                    "left right" 2fr
+                    "bottom bottom" 1fr/1fr 1fr;
+            }
+            .cl-tip {
+                border: 1px solid black;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: larger;
+            }
+            .cl-tip:hover {
+                background-color: lightblue;
+            }
+            .cl-tip[position="top"] {
+                grid-area: top;
+                border-radius: 10px 10px 0 0;
+            }
+            .cl-tip[position="left"] {
+                grid-area: left;
+            }
+            .cl-tip[position="right"] {
+                grid-area: right;
+            }
+            .cl-tip[position="bottom"] {
+                grid-area: bottom;
+                border-radius: 0 0 10px 10px;
+            }
+
+            
+        </style>
+        <link rel="stylesheet" href="style.css" />
+    </head>
+    <body>
+        <div class="container">
+            <div class="cl-tip" tooltip="this tip on top" position="top">top tip</div>
+            <div class="cl-tip" tooltip="hello left" position="left">left tip</div>
+            <div class="cl-tip" tooltip="hello right" position="right">right tip</div>
+            <div class="cl-tip" tooltip="I show on bottom" position="bottom">bottom tip</div>
+        </div>
+    </body>
+</html>

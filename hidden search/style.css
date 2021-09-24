@@ -1,0 +1,57 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    display: flex;
+
+}
+
+.search {
+    margin: auto;
+    position: relative;
+}
+
+.btn-search,
+.input-search {
+    background:rgb(7,29,37);
+    color:#FFF;
+    font-size: 1.2em;
+    height:3em;
+    width:3em;
+    padding:10px;
+    position: absolute;
+    top: 0px;
+    right:0;
+    border-style: outset;
+}
+.btn-search{
+    border-left:none;
+}
+.input-search{
+    border-right: none;
+}
+
+/* 两个东西 focus时 样式也融为一体 */
+.search:focus-within .btn-search,
+.search:focus-within .input-search{
+    outline: none;
+    border:3px solid rgb(37,129,129);
+}
+.search:focus-within .btn-search{
+    border-left: none;
+}
+.search:focus-within .input-search{
+    border-right: none;
+    /* 调整一点小细节 */
+    transform:translateX(-3px);
+}
+
+/* active 下的样式 */
+.search.active .input-search{
+    width:14em;
+    transition:width 0.5s ease;
+}

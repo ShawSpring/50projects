@@ -23,10 +23,11 @@ p {
     font-family: "xiaowei", Arial, Helvetica, sans-serif;
     width: 900px;
     background-image: linear-gradient(90deg, #52ACFF, #FFE32C, #da4545,#FFE32c,#52ACFF);
-   -webkit-background-clip:text;
+   /* -webkit-background-clip:text; */
    background-clip:text;
    -webkit-background-clip:text;
-   -webkit-text-fill-color:transparent;
+   /* -webkit-text-fill-color:transparent; */
+   color:transparent;
 
    background-size: 200%;
 

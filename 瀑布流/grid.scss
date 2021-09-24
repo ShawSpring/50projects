@@ -1,0 +1,48 @@
+@import "base";
+
+//
+$item_width: 240px;
+$item_count: 20;
+
+.container {
+   width: 100%;
+   //高度不设置，让其根据内容自动撑开
+   display: grid;
+   grid-template-columns: repeat(auto-fill, $item_width);
+   justify-content: space-evenly;
+   grid-auto-flow: row dense; //先行后列 dense flow
+ 
+//    row-gap: 12px;  不要gap 通过margin/padding设置留白  方便设置grid-row:auto / span xxx
+   grid-auto-rows: 10px; // 10px 为颗粒度 span ceil(height/10)
+
+   // template-rows不指定 不知道内容能填充多少行
+   .item {
+       padding-bottom: 20px;
+      width: $item_width;
+      position: relative;
+    //   transition-property: all;
+      &::before {
+         position: absolute;
+         left: 50%;
+         top: 50%;
+         transform: translate(-50%, -50%);
+         font-size: 24px;
+      }
+      @for $i from 1 through $item_count {
+         &:nth-child(#{$i}) {
+            background-color: rgb(random(255), random(255), random(255));
+            order:$i;
+            $height: random(300) + 50;
+            height: #{$height}px;
+            // transition-delay: #{$i * 100}ms;
+            // 如果是图片 高度在css中未知 可以在js中调整 span
+            grid-row:auto / span #{ceil($height / 10)};
+
+            &::before {
+            //    content: #{$i};  错误 
+            content:"#{$i}";
+            }
+         }
+      }
+   }
+}

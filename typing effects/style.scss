@@ -1,0 +1,68 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --num-characters: 60;
+
+  --color-font: #fff;
+  --color-bg: rgb(15, 51, 40);
+  --font-size: 18px;
+  --typing-duration: 30s;
+}
+
+body {
+  background-color: var(--color-bg);
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.typing-text {
+  color: var(--color-font);
+  font-size: var(--font-size);
+  position: relative;
+  font-family: monospace;
+  /* 不能换行 换行就第二行露馅了 */
+  white-space: pre;
+}
+
+.typing-text::before,
+.typing-text::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  background-color: var(--color-bg);
+  animation: move-to-right var(--typing-duration) steps(var(--num-characters))
+    1s forwards;
+}
+
+/* 价格延迟 1s， blink先闪1s后在move-to-right */
+.typing-text::after {
+  width: 2px;
+  background-color: var(--color-font);
+  animation: blink 1s steps(3) infinite,
+    move-to-right var(--typing-duration) steps(var(--num-characters)) 1s
+      forwards;
+}
+@keyframes move-to-right {
+  to {
+    left: 100%;
+  }
+}
+
+@keyframes blink {
+  from,
+  to {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}

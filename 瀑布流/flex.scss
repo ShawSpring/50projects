@@ -1,0 +1,66 @@
+$n-columns: 5;
+$n-rows: 8;
+
+@import "base";
+
+@mixin absolute-center{
+  position: absolute;
+  left:50%;
+  top:50%;
+  transform: translate(-50%,-50%);
+}
+
+
+// 可以优化为 安全色 
+@function randomColor() {
+   @return rgb(random(255), random(255), random(255));
+}
+body {
+}
+
+.container {
+
+   display: flex;
+   flex-flow: row nowrap;
+   background: #bbb;
+   padding: 0 5px;
+   justify-content: space-between;
+   .column {
+      flex: 0 1 #{(100% / $n-columns) - 1%};
+      background: #fff;
+      display: flex;
+      flex-flow: column nowrap;
+      .item {
+         width: 100%;
+         margin: 10px auto;
+         position: relative;
+         // 纵向空间肯定够  因为height定死了100vh,肯定超了，默认情况下会flex会自动缩小，shrink=0 则不会缩小 越出边界，
+         // 更好的做法是 容器不要定死高度 让高度根据内容自动撑开
+        //  flex: 0 0 auto; 
+         &:last-child,
+         &:first-child {
+            margin: 0 auto;
+         }
+      }
+   }
+   @for $i from 1 through $n-columns {
+      .column:nth-child(#{$i}) {
+         @for $j from 1 through $n-rows {
+            .item:nth-child(#{$j}) {
+              $_color:randomColor();
+               width: 100%;
+               height: #{random(300) + 50}px;
+               background-color: $_color;
+
+               &::before{
+                 content:"#{$j}";
+                 font-size:24px;
+                 color:rgb(255,255,255) - $_color; // 计算对比色
+                 font-weight: bold;
+                  @include absolute-center;
+               }
+            }
+         }
+      }
+   }
+}

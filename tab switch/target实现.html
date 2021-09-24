@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>target实现 tab 切换</title>
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+            .container {
+                width: 400px;
+                height: 300px;
+                margin: 50px auto;
+                position: relative;
+            }
+            nav li {
+                list-style: none;
+                display: block;
+                height: 2.5em;
+                border: 1px solid black;
+                float: left;
+                background-color: darkgray;
+                padding: 5px 10px;
+            }
+            nav li a {
+                display: block;
+                line-height: 2em;
+                text-decoration: none;
+                cursor: pointer;
+            }
+            .container > div {
+                width: 100%;
+                height: 250px;
+                position: absolute;
+                top: 2.5em;
+                background-color: lightpink;
+                box-shadow: inset 0px 0px 3px 2px black;
+                display: none;
+                padding: 1em;
+            }
+
+            .container > div:target {
+                display: block;
+            }
+            #content1:target ~ nav li:nth-of-type(1) {
+                background-color: lightcoral;
+            }
+
+            #content2:target ~ nav li:nth-of-type(2) {
+                background-color: lightcoral;
+            }
+
+            #content3:target ~ nav li:nth-of-type(3) {
+                background-color: lightcoral;
+            }
+
+            /* 设置默认 激活的第一个 */
+            .container>div:first-of-type {
+                display: block;
+            }
+            .container>div ~ nav li:first-of-type {
+                background-color: lightcoral;
+            }
+            /* 其它content激活的时候 要把content1的激活取消掉 */
+           .container>div:not(:first-of-type):target~nav li:first-of-type{
+               background-color: darkgray;
+           }
+        </style>
+    </head>
+    <body>
+        <figure>
+            <h3>纯css 利用target伪类实现的tab切换</h3>
+            <blockquote>
+                :target 代表作为锚点的目标的该元素，即<strong
+                    >url后#标识的元素</strong
+                >
+            </blockquote>
+            <H4>关键点</H4>
+            <ul>
+                <li>div:target{display:block;/z-index:1} 将target的内容显示出来</li>
+                <li>:target~ul li{} 将对应的li修改样式，<strong>ul应在content后面，方便使用~选择器</strong></li>
+                <li>设置默认选中content1,先直接设置content1和tab1为激活样式，在设置
+                    <pre><code> 
+                    .container>div:not(:first-of-type):target~nav li:first-of-type{
+                         background-color: darkgray;
+                    }
+            </code></pre></li>
+            </ul>
+        </figure>
+        <div class="container">
+            <div id="content1">Lorem ipsum dolor sit amet.</div>
+            <div id="content2">
+                <h3>content2 的一些内容</h3>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                    Quasi odit nihil fugiat, exercitationem, quibusdam maxime
+                    odio provident natus voluptatibus optio distinctio aliquid,
+                    deserunt sit molestiae necessitatibus repellendus explicabo.
+                    Officia, quas!
+                </p>
+            </div>
+            <div id="content3">
+                <p>Lorem ipsum dolor sit.</p>
+                <p>content3 的一些内容</p>
+            </div>
+
+            <nav>
+                <ul>
+                    <li class="active"><a href="#content1">content1</a></li>
+                    <li><a href="#content2">content2</a></li>
+                    <li><a href="#content3">content3</a></li>
+                </ul>
+            </nav>
+        </div>
+    </body>
+</html>

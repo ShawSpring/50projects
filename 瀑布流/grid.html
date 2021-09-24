@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>grid实现瀑布流布局</title>
+    <link rel="stylesheet" href="grid.css">
+</head>
+<body>
+   
+    <div class="container">
+        <!-- item的数量不定 可以调整也能自适应 -->
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+    </div>
+    <script>
+
+        //根据item的高度自动调整span 行不通  只调整了item的样式 但是整个容器不跟着调整 
+        // const items=document.querySelectorAll('.container .item')
+        // items.forEach((item)=>{
+        //     var span=Math.ceil(item.clientHeight / 10)
+        //     item.style.gridRow=`auto / ${span}`
+        // })
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            box-sizing: border-box;
+        }
+        body{
+            height: 100vh;
+        }
+        .box h2{
+            text-transform: uppercase;
+            font-size: 42px;
+            position: absolute;
+            bottom: 20px;
+            text-align: center;
+            margin-left: 20px;
+        }
+        .box{
+            margin:auto;
+            width: 60vmin;
+            height: 100vmin;
+            position: relative;
+            background-color: lightseagreen;
+        }
+        .box::before{
+            content: "";
+            position: absolute;
+            background-color: #fff;
+            width:120vmin;
+            height: 120vmin;
+            border-radius: 40% 45% 35% 48%;
+            top:-40%;
+            /* 水平居中 */
+            left:-26%;
+            transform: rotateZ(0deg);
+            animation: rotate 10s infinite linear;
+            
+        }
+        .box::after{
+            content: "";
+            position: absolute;
+            background-color: #fff;
+            width:120vmin;
+            height: 120vmin;
+            border-radius: 35% 60% 42% 55%;
+            top:-40%;
+            left:-26%;
+            transform: rotateZ(0deg);
+            animation: rotate 10s infinite 2s linear;
+            
+        }
+        @keyframes rotate{
+            0%{
+                transform: rotateZ(0deg);
+            }
+            50%{
+                transform: rotateZ(360deg);
+            }
+            100%{
+                transform: rotateZ(360deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <h2>this is a wave</h2>
+    </div>
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin:0;
+            box-sizing: border-box;
+        }
+        .container{
+            margin: auto;
+            width: 300px;
+            height: 300px;
+            /* overflow: hidden; */
+            position: relative;
+        }
+        fieldset{
+            width: 300px;
+            height: 300px;
+            border:10px solid transparent;
+            border-top-color:black;
+            position:absolute;
+            top:0;
+            left: 0;
+            box-sizing: border-box; 
+        }
+        legend{
+            margin-left: 0;
+            font-size: 1.2em;
+            font-weight: bold;
+            padding: 0 8px;
+            /* 必须要加这句  因为legend的原因，fieldset的四条框不是正方形 旋转会错位 */
+            line-height: 10px;
+
+            animation:moveLegend 4s ease-in-out infinite alternate;
+            
+        }
+        fieldset:nth-of-type(2){
+            transform: rotate(-90deg);
+        }
+        fieldset:nth-of-type(3),
+        fieldset:nth-of-type(3)>legend{
+            transform: rotate(180deg);
+        }
+        fieldset:nth-of-type(4){
+            transform: rotate(90deg);
+        }
+        @keyframes moveLegend {
+            100%{
+                margin-left: 6 role="presentation"0%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <fieldset role="presentation"><legend>萝莉</legend></fieldset>
+        <fieldset role="presentation"><legend>御姐</legend></fieldset>
+        <fieldset role="presentation"><legend>翠花</legend></fieldset>
+        <fieldset role="presentation"><legend>公主</legend></fieldset>
+    </div>
+    <article>
+        <P><code>role="presentation" 这家伙的角色仅仅是表现、展示，去掉其<strong>语义性</strong></code></P>
+    </article>
+</body>
+</html>

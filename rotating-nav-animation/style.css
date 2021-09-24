@@ -1,0 +1,156 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #333;
+    color: #222;
+    margin:0;
+}
+
+.container {
+    background-color: #fafafa;
+    min-height: 100vh;
+    width:100%;
+    padding:50px;
+    transform-origin: left top;
+    transition:transform .5s ease-in-out;
+}
+
+.content {
+    transform-origin: left top;
+    margin: 50px auto;
+    max-width: 1000px;
+}
+
+.circle-container {
+    position: fixed;
+    top: -6rem;
+    left: -6rem;
+
+}
+
+.circle {
+    width: 12rem;
+    height: 12rem;
+    background: #ff7979;
+    border-radius: 50%;
+    position: relative;
+    /* transition:transform 0.5s ease-in-out; */
+}
+
+.circle button {
+   border:none;
+    position: absolute;
+    top:60%;
+    left:60%;
+    background-color:transparent;
+    cursor: pointer;
+}
+
+.circle button:focus{
+    outline: none;
+}
+.circle button>.iconfont{
+    font-size: 2.4rem;
+    text-shadow: 3px 3px 1px #a88,1px 1px 2px #444;
+}
+.circle button:focus .iconfont{
+    
+    /* text-shadow: none;
+     */
+     
+}
+
+
+button#open{
+    transform-origin: center center;
+    transform: rotate(70deg);
+    left:28%;
+    top:66%;
+}
+
+/* 旋转后的样式 */
+.container.show-nav {
+    transform:rotate(-20deg);
+}
+.container.show-nav .circle{
+    transform:rotate(-55deg);
+}
+/* close后转回来 */
+.container{
+    transform:rotate(0deg);
+}
+.container .circle{
+    transform:rotate(0deg);
+}
+/* nav 样式 */
+nav{
+    position:fixed;
+    bottom:40px;
+    left:0;
+    z-index: 100;
+}
+nav ul{
+  
+}
+nav li{
+    list-style: none;
+    padding:1rem 1rem;
+    display:flex;
+    justify-content:flex-start;
+    align-items:baseline;
+}
+nav a{
+    font-size:1.2rem;
+    padding-left: 1rem;
+    text-decoration: none;
+}
+nav a:hover{
+    text-decoration:underline;
+}
+nav a:link, 
+nav a:visited{
+    color:#fff;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+nav .iconfont{
+    font-size:1.8rem;
+    color:#fff;
+}
+nav li:nth-of-type(2){
+    padding-left: 1.5rem;
+}
+nav li:nth-of-type(3){
+    padding-left:2rem;
+}
+/* nav的移动动画 */
+nav ul li{
+    transform: translateX(-100%);
+    transition:transform .5s ease-in-out 0.3s;
+}
+
+nav li:nth-of-type(2){
+    transform: translateX(-150%);
+}
+nav li:nth-of-type(3){
+    transform: translateX(-200%);
+}
+.container.show-nav+nav li{
+    transform: translateX(0%);
+    transition-delay: .3s;
+}
+
+.content h1,.content h3{
+    text-align: center;
+}
+.content img{
+    max-width: 100%;
+}
+.content p{
+    line-height: 1.4rem;
+    margin:2rem auto;
+}

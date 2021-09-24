@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rotating Navigation</title>
+    <!-- 点击按钮js切换 .content的classList.add('show-nav')  -->
+    <!-- .content.show-nav的样式 rotate(-20deg) -->
+
+    <link rel="stylesheet" href="http://at.alicdn.com/t/font_1213617_530c01r3wm5.css">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="circle-container">
+            <div class="circle">
+                  <button id="close" onclick="document.querySelector('.container').classList.add('show-nav');"><i
+                        class="iconfont icon-menu"></i></button>
+                <button id="open" onclick="document.querySelector('.container').classList.remove('show-nav');"><i
+                        class="iconfont icon-cuocha_kuai"></i></button>
+            </div>
+        </div>
+        <main class="content">
+            <h1>Amazing Article</h1>
+            <small>Florin Pop</small>
+            <p>button的样式消失处理：</p>
+            <pre><code>
+                .circle button {
+                    border:none;
+                    background-color:transparent;
+                 }
+                 .circle button:focus{
+                     outline: none;
+                 }
+            </code></pre>
+
+            <h3>My Dog</h3>
+            <img src="https://p0.piqsels.com/preview/1001/574/539/flowers-painted-fake-flowers.jpg" alt="">
+            <p>图片设置<code>max-width:100%;</code> 就能使之自适应。<br>
+                默认是会overflow:auto 溢出的。</p>
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sit libero deleniti rerum quo, incidunt vel
+                consequatur culpa ullam. Magnam facere earum unde harum. Ea culpa veritatis magnam at aliquid.
+                Perferendis totam placeat molestias illo laudantium? Minus id minima doloribus dolorum fugit deserunt
+                qui vero voluptas, ut quia cum amet temporibus veniam ad ea ab perspiciatis, enim accusamus asperiores
+                explicabo provident. Voluptates sint, neque fuga cum illum, tempore autem maxime similique laborum odio,
+                magnam esse. Aperiam?
+            </p>
+        </main>
+    </div>
+    <nav>
+        <ul>
+            <li><i class="iconfont icon-home"></i><a href="">home</a></li>
+            <li><i class="iconfont icon-about"></i><a href="">About</a></li>
+            <li><i class="iconfont icon-mail"></i><a href="">Contact</a></li>
+        </ul>
+    </nav>
+</body>
+
+</html>

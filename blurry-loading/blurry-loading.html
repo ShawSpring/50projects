@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            height: 100vh;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .bg {
+            width: calc(100% + 60px);
+            height: calc(100% + 60px);
+            background: url('https://p0.piqsels.com/preview/721/93/250/united-states-santa-monica-santa-monica-pier-beach-family-people-nature-life-everyday-simple-boy-girl-ater-sand.jpg') no-repeat center/cover;
+            position: absolute;
+            z-index: -1;
+            left:-30px;
+            top:-30px;
+        }
+
+        .loading-text {
+            color: lightcoral;
+            font-size: 4rem;
+            
+        }
+    </style>
+</head>
+
+<body>
+    <section class="bg">
+    </section>
+    <div class="loading-text">0%</div>
+
+    <script>
+        const bg = document.querySelector('.bg');
+        const loadingText = document.querySelector('.loading-text');
+        let load = 0;
+        
+        let timer = setInterval(() => {
+            load++;
+            if(load>=100){
+                clearInterval(timer);
+                load=100;
+            }
+            loadingText.innerText = load+'%'
+            // 设置 opacity 从0到1 blur从30px到0；
+            loadingText.style.opacity = load/100;
+            bg.style.filter=`blur(${(1 - load/100) *30 }px)`;
+        }, 50)
+    </script>
+</body>
+
+</html>

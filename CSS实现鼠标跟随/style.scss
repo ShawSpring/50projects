@@ -1,0 +1,55 @@
+*{
+    padding:0;
+    margin:0;
+    box-sizing: border-box;
+}
+
+$rowCount: 10; //每行有多少个 球
+$columnCount: 10; //一列有多少个 球
+$totalCount: $rowCount * $columnCount;
+
+.g-container {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+
+  .position {
+    position: absolute;
+    // border: 1px solid #000;
+    width: 100% / $rowCount;
+    height: 100% / $columnCount;
+    // @for $i from $start to $end 和C++一样，不包含$end,for  through则包含end
+    @for $i from 0 to $totalCount {  
+        $x: floor($i / $rowCount); //行数 减1
+        $y: $i % $rowCount;
+        &:nth-child(#{$i + 1}){
+            top:$x * (100% / $rowCount);
+            left:$y * (100% / $columnCount);
+        }
+        &:nth-child(#{$i + 1}):hover ~ .ball{
+            display: block;
+            top:($x + 0.5) * (100% / $rowCount);
+            left:($y + 0.5) * (100% / $columnCount);
+        }
+    }
+  }
+  .ball{
+      display: none;
+      width:100vmax / $rowCount;
+      height:100vmax / $columnCount;
+      border:1px solid #333;
+      border-radius: 40%;
+      position:absolute;
+      transform: translate(-50%,-50%);
+      transition: all 0.2s ease-in 0.1s;//transition也起到了防抖的效果 没有这句会非常卡 鼠标移动就要刷新
+      animation:rotate 3s infinite ease-in-out alternate;
+      z-index: -1;
+  }
+  @keyframes rotate {
+      100%{
+        transform: translate(-50%,-50%) scale(0.5) rotate(45deg);
+
+      }
+  }
+}

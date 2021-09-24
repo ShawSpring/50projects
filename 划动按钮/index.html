@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>划动按钮</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        min-height: 100vh;
+        width: 100%;
+      }
+      nav {
+        --li-width: 80px;
+        margin: 100px auto;
+        display: flex;
+        justify-content: center;
+      }
+      nav ul {
+        display: flex;
+        list-style: none;
+        position: relative;
+        background-color: lightseagreen;
+      }
+      nav li {
+        width: var(--li-width);
+        /* border: 1px solid black; */
+        padding: 8px 5px 10px;
+        text-align: center;
+        z-index: 1;
+      }
+      nav li a {
+          width: 100%;
+          height: 100%;
+        text-decoration: none;
+        color: #fff;
+      }
+      nav .slider {
+        position: absolute;
+        bottom: 0;
+        height: 5px;
+        width: var(--li-width);
+        background-color: lightcoral;
+        transition: all 0.3s ease-in-out;
+      }
+      li:hover:nth-of-type(1)~ div {
+        left:0;
+      }
+      li:hover:nth-of-type(2)~ div {
+        left:calc(1*var(--li-width));
+      }
+      li:hover:nth-of-type(3)~ div {
+        left:calc(2*var(--li-width));
+      }
+      li:hover:nth-of-type(4)~ div {
+        left:calc(3*var(--li-width));
+      }
+      li:hover:nth-of-type(5)~ div {
+        left:calc(4*var(--li-width));
+      }
+     
+
+
+    </style>
+  </head>
+  <body>
+    <!-- nav下有一滑块，跟随鼠标滑动 -->
+    <nav>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Profile</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">About</a></li>
+            <div class="slider"></div>
+        </ul>
+    </nav>
+ <p>
+        1. ::after 不能用 ~兄弟选择器 <br>
+        2. hover在前 nth-of-type在后
+ </p>
+  </body>
+</html>

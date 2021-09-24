@@ -1,64 +1,136 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>draw heart with css</title>
     <style>
-        .canvas{
-            width:200px;
-            height:200px;
-            margin:auto;
-            --width:50px;
-            --height:50px;
-            position:relative;
+        body {
+            display: flex;
+            height: 100vh;
+            align-items: center;
+            justify-content: space-around;
+            text-align: center;
         }
-        .heart{
-            width:var(--width);
-            height:var(--height);
-            background-color:pink;
 
-            transform:rotate(-45deg);
+        .cavas {
+            height: 200px;
         }
-        .heart::before{
-            /* content是必须的，即使没有文字 */
-            content:""; 
 
-            width:var(--width);
-            height: var(--height);
-            background-color:pink;
-            
-            position:absolute;
-            top:calc(var(--height)/-2);
+        #heart {
+            width: 50px;
+            height: 50px;
+            background-color: pink;
+            transform: rotate(-45deg);
+            position: relative;
+            top: 30px;
+        }
+
+        #heart:before {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 50px;
+            background-color: inherit;
             border-radius: 50%;
-            
+            position: relative;
+            top: calc(100% / -2);
         }
-        .heart::after{
-            /* content是必须的，即使没有文字 */
-            content:""; 
 
-            width:var(--width);
-            height: var(--height);
-            background-color:pink;
-            
-            position:absolute;
-            left:calc(var(--width)/2);
+        #heart:after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 50px;
+            background-color: inherit;
             border-radius: 50%;
-            
+            position: relative;
+            left: calc(100% / 2);
+            top: -100%;
+        }
+
+        /* beating heart of rainbow */
+        #heart2 {
+            width: 13em;
+            height: 12em;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        #heart2 span {
+            display: block;
+            border-radius: 1em;
+            width: 0.9em;
+            height: var(--h);
+            background-color: var(--color-span);
+            position: relative;
+            top: var(--t);
+            animation: beating 2s infinite ease-in-out;
+        }
+
+        @keyframes beating {
+
+            0%,
+            100% {
+                height: var(--h);
+                top: var(--t);
+            }
+
+            50% {
+                height: 50%;
+                top: 25%;
+            }
+        }
+
+        #heart2 span:nth-child(1),
+        #heart2 span:nth-child(9) {
+            --color-span: rgb(255, 102, 0);
+            --h: 38%;
+            --t: 2em;
+        }
+
+        #heart2 span:nth-child(2),
+        #heart2 span:nth-child(8) {
+            --color-span: rgb(255, 208, 0);
+            --h: 58%;
+            --t: 1.4em;
+        }
+
+        #heart2 span:nth-child(3),
+        #heart2 span:nth-child(7) {
+            --color-span: rgb(145, 255, 0);
+            --h: 78%;
+            --t: 0.6em;
+        }
+
+        #heart2 span:nth-child(4),
+        #heart2 span:nth-child(6) {
+            --color-span: rgb(0, 255, 213);
+            --h: 80%;
+            --t: 1.4em;
+        }
+
+        #heart2 span:nth-child(5) {
+            --color-span: rgb(132, 0, 255);
+            --h: 85%;
+            --t: 1.6em;
         }
     </style>
 </head>
+
 <body>
-    <H3>思路</H3>
-    <ul>
-        <li>画个正方形</li>
-        <li>利用伪元素，画两个同等高宽的圆形</li>
-        <li>两个圆形分别偏移到正方形的上边和侧边，组成心形</li>
-        <li>transform：rotate() 扶正心行</li>
-    </ul>
-    <div class="canvas">
-        <div class="heart"></div>
+    <div class="cavas">
+        <figcaption>heart</figcaption>
+        <div id="heart"></div>
+    </div>
+    <div class="cavas">
+        <figcaption>beating heart of rainbow</figcaption>
+        <div id="heart2">
+            <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+        </div>
     </div>
 </body>
+
 </html>

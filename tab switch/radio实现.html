@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            * {
+                margin: 0;
+                box-sizing: border-box;
+                padding: 0;
+            }
+            .container {
+                position: relative;
+                width: 400px;
+                height: 300px;
+                margin: auto;
+            }
+            .container input[type="radio"] {
+                display: none;
+            }
+            nav li {
+                height: 2rem;
+                width: 4rem;
+                padding: 5px;
+                list-style: none;
+                display: block;
+                float: left;
+                border: 1px solid black;
+                background-color: darkgray;
+            }
+            .container .content {
+                position: absolute;
+                top: 2rem;
+                background-color: gray;
+                z-index: -1;
+                width: 100%;
+                height: calc(100% - 2rem);
+                padding: 1rem;
+            }
+            #nav1:checked ~ #content1,
+            #nav2:checked ~ #content2,
+            #nav3:checked ~ #content3 {
+                z-index: 1;
+                background-color: lightblue;
+            }
+
+            #nav1:checked ~ nav li:first-of-type,
+            #nav2:checked ~ nav li:nth-of-type(2),
+            #nav3:checked ~ nav li:nth-of-type(3),
+              /* 设置默认激活 nva1 */
+            .container li:first-of-type {
+                background-color: lightblue;
+                border-bottom: none;
+            }
+            #content1{
+                z-index: 0;/* 默认时就比其他的-1高   */
+                background-color: lightblue;
+            }
+            /* 非选中的nav项要设置成 非激活转态 */
+            #nav2:checked ~ nav li:first-of-type,
+            #nav3:checked ~ nav li:first-of-type
+            {
+                border: 1px solid black;
+                background-color: darkgray;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <input type="radio" id="nav1" name="nav" />
+            <input type="radio" id="nav2" name="nav" />
+            <input type="radio" id="nav3" name="nav" />
+            <nav>
+                <ul>
+                    <li><label for="nav1">nav1</label></li>
+                    <li><label for="nav2">nav2</label></li>
+                    <li><label for="nav3">nav3</label></li>
+                </ul>
+            </nav>
+            <div id="content1" class="content">
+                1111 Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Eos repudiandae nesciunt deleniti molestias dolorem mollitia,
+                quod laudantium voluptate eligendi consequuntur aspernatur, modi
+                rerum quae sunt nobis vel. Rerum, labore quae!
+            </div>
+            <div id="content2" class="content">
+                22222 Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Voluptate veritatis temporibus doloribus, accusamus facilis
+                excepturi voluptates totam?
+            </div>
+            <div id="content3" class="content">
+                3333 Lorem ipsum dolor, sit amet consectetur adipisicing.
+            </div>
+        </div>
+    </body>
+</html>
